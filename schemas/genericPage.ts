@@ -1,13 +1,13 @@
 import {defineField, defineType} from 'sanity'
 
 export default defineType({
-  name: 'artist',
-  title: 'Artist',
+  name: 'genericPage',
+  title: 'Generic Page',
   type: 'document',
   fields: [
     defineField({
-      name: 'name',
-      title: 'Name',
+      name: 'title',
+      title: 'Page Title',
       type: 'string',
     }),
     defineField({
@@ -16,13 +16,13 @@ export default defineType({
       type: 'slug',
       validation: (Rule) => Rule.required(),
       options: {
-        source: 'name',
+        source: 'title',
         maxLength: 96,
       },
     }),
     defineField({
-      name: 'bio',
-      title: 'Bio',
+      name: 'content',
+      title: 'Page Content',
       type: 'blockContent',
     }),
     defineField({
@@ -34,25 +34,16 @@ export default defineType({
       },
     }),
     defineField({
-      name: 'artistLink',
-      type: 'url',
-      title: 'Artist Link',
-    }),
-    defineField({
-      title: 'Role',
-      name: 'role',
+      name: 'parentRoute',
       type: 'string',
+      title: 'Parent Route',
       options: {
         list: [
-          {title: 'Singer', value: 'singer'},
-          {title: 'Composer', value: 'composer'},
+          {title: 'About', value: 'about'},
+          {title: 'Listen', value: 'listen'},
+          {title: 'Support', value: 'support'},
         ],
       },
-    }),
-    defineField({
-      name: 'voicePart',
-      title: 'Voice Part',
-      type: 'string',
     }),
   ],
 })
