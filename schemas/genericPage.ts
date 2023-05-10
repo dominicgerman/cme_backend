@@ -23,11 +23,33 @@ export default defineType({
     defineField({
       name: 'content',
       title: 'Page Content',
-      type: 'blockContent',
+      type: 'array',
+      of: [
+        {
+          name: 'contentBlock',
+          type: 'object',
+          title: 'Content Block',
+          fields: [
+            defineField({
+              name: 'blockText',
+              title: 'Text Content',
+              type: 'blockContent',
+            }),
+            defineField({
+              name: 'blockImage',
+              title: 'Image (Optional)',
+              type: 'image',
+              options: {
+                hotspot: true,
+              },
+            }),
+          ],
+        },
+      ],
     }),
     defineField({
       name: 'mainImage',
-      title: 'Main image',
+      title: 'Banner image',
       type: 'image',
       options: {
         hotspot: true,
